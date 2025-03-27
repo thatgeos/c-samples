@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
 	{
 		if (!strcasecmp("-?", argv[i]))			//intervallo tra una x e l'altra
 		{
-			printf("\nTRACCIA v0.2\n\n  -w 640 (lunghezza della finestra)\n  -h 480 (altezza della finestra)\n  -f (schermo intero) !!NON FUNZIONA CORRETTAMENTE!!\n  -m 10 (valore massimo di x)\n  -d 0.1 (intervallo tra due valori di x)\n\n");
+			printf("\n TRACCIA v0.2\n\n  -w 640 (lunghezza della finestra)\n  -h 480 (altezza della finestra)\n  -f (schermo intero) !!NON FUNZIONA CORRETTAMENTE!!\n  -m 10 (valore massimo di x)\n  -d 0.1 (intervallo tra due valori di x)\n\n");
 			return 0;
 		}
 
