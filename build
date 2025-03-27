@@ -1,1 +1,1 @@
-gcc -g main.c inprint2.c inline_font.h SDL2_inprint.h -o main -lSDL2
+gcc -g main.c inprint2.c inline_font.h SDL2_inprint.h -o traccia -lSDL2 -lm
