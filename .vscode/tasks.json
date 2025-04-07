@@ -1,0 +1,34 @@
+{
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: gcc build active file",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"main.c",
+				"f.c",
+				"f.h",
+				"inline_font.h",
+				"tinyexpr.h",
+				"tinyexpr.c",
+				"inprint2.c",
+				"SDL2_inprint.h",
+				"-o",
+				"traccia",
+				"-lm",
+				"-lSDL2",
+				""
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: /usr/bin/gcc"
+		}
+	]
+}

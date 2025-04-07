@@ -5,11 +5,16 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [],
+      "args": [
+        ""
+      ],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/marcy/c",
-      "program": "/home/marcy/c/main",
+      "program": "/home/marcy/c/traccia",
+      "args": ["-f",
+                "test.txt"
+              ],
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
