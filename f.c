@@ -6,9 +6,11 @@
 
 void grid(SDL_Renderer* r, int w, int h, int m)
 {
+	incolor(0xffffff, 0);
 	int cx = w/2;				//coordinate in pixel del centro 0,0
 	int cy = h/2;
-	char txt[4];
+	char txt[4];	  
+
 	int k = -m + 1;
 
 	double part = (double)w / (double)(2*m); //lunghezza in pixel di ogni unitá del grafico
@@ -41,23 +43,43 @@ void grid(SDL_Renderer* r, int w, int h, int m)
 	SDL_RenderDrawLine(r, 0, cy, w, cy);
 }
 
-void plot(SDL_Renderer* r, int w, int h, int m, double dx, char f[])
+void plot(SDL_Renderer* r, int w, int h, int m, double dx, char f[], int color)
 {
 	
 	double part = (double)w / (double)(2*m);
-	double y[w];								// creo due array per immagazzinare tutti i valori x e y
-	double x[w];
+	double y[(int)(w/dx)];								// creo due array per immagazzinare tutti i valori x e y
+	double x[(int)(w/dx)];
 	double xvar;								// mi serve per la libreria di valutazione
 	te_variable var[] = {{"x", &xvar}};				// si aspetta piú di una variabile
 	int err;														// per immagazzinare eventuali errori
 	te_expr *expr = te_compile(f, var, 1, &err);		// compilazione della funzione
 	
+	
 
 	double i = -m;
 
-	SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
+	if (color % 4 == 0)
+	{
+		SDL_SetRenderDrawColor(r, 255, 160, 16, 255); //arancione
+		incolor(0xffa010, 0);
+	}
+	if (color % 4 == 1)
+	{
+		SDL_SetRenderDrawColor(r, 255, 96, 208, 255); //rosa
+		incolor(0xff60d0, 0);
+	}
+	if (color % 4 == 2)
+	{
+		SDL_SetRenderDrawColor(r, 96, 255, 128, 255); //verde
+		incolor(0x60ff80, 0);
+	}
+	if (color % 4 == 3)
+	{
+		SDL_SetRenderDrawColor(r, 80, 208, 255, 255); //azzurro
+		incolor(0x50d0ff, 0);
+	}
 	
-	for (int n = 0; i < m && n < w; n += 1)
+	for (int n = 0; i < m && n < w/dx; n += 1)
 	{
 		x[n] = i;
 		xvar = x[n];
@@ -81,4 +103,6 @@ void plot(SDL_Renderer* r, int w, int h, int m, double dx, char f[])
 			//quella del piano di SDL
 		}
 	}
+	inprint(r, f, 3, 3+8*color);	//riciclo la variabile color per la coordinata y del testo perché non é altro che un contatore
+									//e quindi semplicemente mi tiene conto di quale funzione sta disegnando.
 }

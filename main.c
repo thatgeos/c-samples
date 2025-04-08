@@ -16,11 +16,12 @@ int main(int argc, char* argv[])
 	Uint32 height = 480;
 	Uint32 flags = 0;
 	Uint32 max = 10;								//valore massimo di x
-	double dx = 0.1;							//intervallo tra una x e l'altra
-	SDL_Event e;
-	char f[50];										//stringa che conterrá la funzione
+	double dx = 0.1;						    	//intervallo tra una x e l'altra
+	SDL_Event e;									//evento di sdl. capta il segnale di chiusura dalla x
+	char f[200];									//stringa che conterrá la funzione
 	FILE *file;
 	int i;
+	int color = 0;										//gestisce il colore delle funzioni
 
 	if (argv[1] != NULL && !(strcasecmp("-f", argv[1])) && argv[2] != NULL)
 	{
@@ -97,14 +98,15 @@ int main(int argc, char* argv[])
 	SDL_SetRenderDrawColor(renderer, 51, 51, 51, 255);
 	SDL_RenderClear(renderer);
 
-	grid(renderer, width, height, max);
+	//grid(renderer, width, height, max);
 
 	while (!(SDL_PollEvent(&e) && e.type == SDL_QUIT))	//continua il display finché non premo x
 	{
 		while (fscanf(file, "%s", f) != EOF)
 		{
 			grid(renderer, width, height, max);
-			plot(renderer, width, height, max, dx, f);
+			plot(renderer, width, height, max, dx, f, color);
+			color += 1;
 		}
 
 		SDL_RenderPresent(renderer);
